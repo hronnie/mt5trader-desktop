@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean:frontend": "if exist \"..\\mt5trader-frontend\\node_modules\" rd /s /q \"..\\mt5trader-frontend\\node_modules\" && if exist \"..\\mt5trader-frontend\\out\" rd /s /q \"..\\mt5trader-frontend\\out\"",
+    "install:frontend": "cd ..\\mt5trader-frontend && npm install --force",
+    "build:frontend": "cd ..\\mt5trader-frontend && npm run build || echo Build error (next-skip-tsc) ignored",
+    "clean:backend": "if exist \"..\\mt5trader-backend\\out\" rd /s /q \"..\\mt5trader-backend\\out\"",
+    "copy:frontend": "xcopy \"..\\mt5trader-frontend\\out\" \"..\\mt5trader-backend\\out\" /E /I /Y",
+    "build:electron": "npx electron-packager . Mt5TraderDesktop --platform=win32 --arch=x64 --out=dist --extra-resource=..\\mt5trader-backend --overwrite",
+    "build:all": "npm run clean:frontend && npm run install:frontend && npm run build:frontend && npm run clean:backend && npm run copy:frontend && npm run build:electron",
+    "start": "electron index.js"
   },
   "keywords": [],
   "author": "",
