@@ -29,7 +29,7 @@ app.on('ready', () => {
   const pythonScriptPath = path.join(
     __dirname,
     '..',
-    'mt5trader-backend',
+    'dist',
     'app.py'
   );
 
