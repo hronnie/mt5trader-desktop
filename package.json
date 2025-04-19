@@ -17,6 +17,8 @@
 
     "build:all": "npm run clean:frontend && npm run install:frontend && npm run build:frontend && npm run clean:backend && npm run obfuscate:backend && npm run copy:frontend && npm run build:electron",
 
+    "build:backend": "npm run clean:backend && npm run obfuscate:backend && npm run copy:frontend && npm run build:electron",
+
     "start": "electron index.js"
   },
   "keywords": [],
